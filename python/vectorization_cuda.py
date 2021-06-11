@@ -3,14 +3,14 @@ import numba as numba
 import GPUtil
 import random
 from timeit import default_timer as timer
-#from ROOT import TMath, TCanvas, TH1D
+
+from ROOT import TMath, TCanvas, TH1D
 
 from numba import vectorize, cuda
 
 
-#pi=TMath.Pi()
+pi=TMath.Pi()
 
-pi = 3.141562
 
 @vectorize(['float32(float32, float32, float32)'], target='cuda')
 #@vectorize(['float32(float32, float32)'], target='gpu')
@@ -54,13 +54,13 @@ def main():
 
 	print("VectorAdd took %f seconds" % vector_time)
 
-	#h1 = TH1D("h1", "test", 100, 0, 100)
-	#h1.Sumw2()
+	h1 = TH1D("h1", "test", 100, 0, 100)
+	h1.Sumw2()
 
-	#for i in range(0,1000):
-	#	h1.Fill(C[i])
-#	h1.Draw()
-#	input()
+	for i in range(0,1000):
+		h1.Fill(C[i])
+	h1.Draw()
+	input()
 
 if __name__ == '__main__':
 	main()
